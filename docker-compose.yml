@@ -1,6 +1,8 @@
-version: '2'
+version: "3.7"
 services:
-    httpbin:
-      build: '.'
-      ports:
-        - '80:80'
+  httpbin:
+    image: httpbin
+    ports:
+      - "8079:80"
+    restart: always
+

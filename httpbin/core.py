@@ -396,20 +396,20 @@ def view_anything(anything=None):
         description: Anything passed in request
     """
 
-    return jsonify(
-        get_dict(
-            "url",
-            "args",
-            "headers",
-            "origin",
-            "method",
-            "form",
-            "data",
-            "files",
-            "json",
-        )
+    res_dict = get_dict(
+        "url",
+        "args",
+        "headers",
+        "origin",
+        "method",
+        "form",
+        "data",
+        "files",
+        "json",
     )
-
+    app.logger.critical("=== Received request to anything")
+    app.logger.critical(f"\n{json.dumps(res_dict, indent=4)}")
+    return jsonify(res_dict)
 
 @app.route("/post", methods=("POST",))
 def view_post():
